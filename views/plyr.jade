@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    .container 
+      .d-flex.justify-content-center.align-items-center(style='height: 100vh;')
+        .text-center
+          h5.mb-3
+            Thank you for using our product. We're glad you're with us.
+          a.btn.btn-primary.btn-lg(role='button')
+              'Click here'
+          video#my-video2(controls, crossorigin , ,playsinline , poster="https://bitdash-a.akamaihd.net/content/sintel/poster.png")
+
+    script(src='https://unpkg.com/plyr@3')
+    script(src='https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js')
+
+    style.
+        .container {margin: 20px auto;width: 600px;}
+        .video {width: 100%;}
+    
+    script.
+        document.addEventListener('DOMContentLoaded', () => {
+        const source = 'http://94.130.96.134:8080/live/amin/aminpassnist/1.m3u8';
+        const video = document.querySelector('video');
+
+        const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
+
+        if (!Hls.isSupported()) {
+        video.src = source;
+        } else {
+        // For more Hls.js options, see https://github.com/dailymotion/hls.js
+        const hls = new Hls();
+        hls.loadSource(source);
+        hls.attachMedia(video);
+        window.hls = hls;
+
+        // Handle changing captions
+        player.on('languagechange', () => {
+        // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
+        setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
+        });
+        }
+
+        // Expose player so it can be used from the console
+        window.player = player;
+        });
+
+
