@@ -1,5 +1,5 @@
 var { Sequelize } = require('sequelize');
-sequelize = new Sequelize('sport_statics', 'wordpress_user', 'azi1234@', {
+sequelize = new Sequelize('football_sport_statics', 'phpmyadmin', 'pmapassnist', {
     host: 'localhost',
     dialect:  'mysql',
     logging: console.log,

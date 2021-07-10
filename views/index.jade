@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  
+
 
   header 
     nav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
@@ -21,13 +21,6 @@ block content
               a.nav-link(href="#intro") Contact us
   main.my-5
     .container
-      .row.mb-5 
-        video#my-video.video-js(controls='', preload='auto', width=740,height=450, data-setup='{}',poster="/images/OZ75PD0.jpg")
-          source(src='#{source}', type='application/x-mpegURL')
-          p.vjs-no-js
-            | To view this video please enable JavaScript, and consider upgrading to a
-            | web browser that
-            a(href='https://videojs.com/html5-video-support/', target='_blank') supports HTML5 video
       -for match in mlist
         .row.mb-1
           .col-12
@@ -38,7 +31,7 @@ block content
           .col-4
             h3=match.hometeam 
           .col-2.text-center.text-light
-            button.btn.btn-success.btn-rounded.btn-block(type="button",data-mdb-ripple-color="#ffffff",onclick=getPlayUrl())=match.matchtime
+            a.btn.btn-success.btn-rounded.btn-block(type="button",data-mdb-ripple-color="#ffffff",href="/play/1")=match.matchtime
              i.fas.fa-download.ms-1
             small.text-dark=match.league
           .col-4
@@ -47,13 +40,3 @@ block content
             img.img-fluid(src=match.awaylogo)
       
 
-      script(src='https://unpkg.com/video.js/dist/video.js')
-      script(src='https://github.com/videojs/http-streaming/releases/download/v2.9.1/videojs-http-streaming.min.js')
-
-  style.
-    .video-js.vjs-menu-button-inline.vjs-slider-active.video-js.vjs-menu-button-inline:focus,.video-js .vjs-menu-button-inline:hover,.video-js.vjs-no-flex .vjs-menu-button-inline{width:10em}.video-js .vjs-controls-disabled .vjs-big-play-button{display:none!important}.video-js .vjs-control{width:3em}.video-js .vjs-menu-button-inline:before{width:1.5em}.vjs-menu-button-inline .vjs-menu{left:3em}.video-js .vjs-load-progress div,.vjs-seeking .vjs-big-play-button,.vjs-waiting .vjs-big-play-button{display:none!important}.video-js .vjs-mouse-display:after,.video-js .vjs-play-progress:after{padding:0 .4em .3em}.video-js.vjs-ended .vjs-loading-spinner{display:none}.video-js.vjs-ended .vjs-big-play-button{display:block!important}.video-js.vjs-paused .vjs-big-play-button,.vjs-paused.vjs-has-started.video-js .vjs-big-play-button,video-js.vjs-ended .vjs-big-play-button{display:block}.video-js .vjs-big-play-button{top:50%;left:50%;background-color:rgba(255,255,255,.28);font-size:4.5em;border-radius:50%}.video-js .vjs-big-play-button:active,.video-js .vjs-big-play-button:focus,.video-js:hover .vjs-big-play-button{background-color:rgba(0,0,0,.35)}.video-js .vjs-loading-spinner{border-color:rgba(255,255,255,.7)}.video-js .vjs-control-bar2{background-color:transparent}.video-js .vjs-control-bar{background-color:rgba(0,0,0,0)!important;color:#fff;font-size:12px}.video-js .vjs-play-progress,.video-js .vjs-volume-level{background-color:#2483d5}.video-js .vjs-big-play-button{height:2em!important;width:2em!important;line-height:1.9em!important;margin-top:-1em!important;margin-left:-1em;border-width:3px}.video-js .vjs-big-play-button:before,.video-js .vjs-icon-play:before{font-size:50px}.video-js .vjs-progress-holder{font-size:1.7em;border-radius:10px}.video-js .vjs-progress-holder .vjs-load-progress,.video-js .vjs-progress-holder .vjs-load-progress div,.video-js .vjs-progress-holder .vjs-play-progress,.video-js .vjs-slider,.vjs-volume-level{border-radius:10px}.video-js .vjs-load-progress{background:rgba(255,255,255,.5)} 
-
-
-
-  script.
-    var player = videojs('my-video');
