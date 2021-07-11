@@ -95,5 +95,41 @@ router.get("/play/:id", function (req, res, next) {
         }
   });
 });
+router.get("/play1/:id", function (req, res, next) {
+  let live_url = "http://iptv.tivifa.com:8000/aminazimi/aminpass@123/99101";
+  const sqlUrl = `SELECT live_url FROM ft_tv_coverage   WHERE match_id=${req.params.id}`;
+  db.query(sqlUrl, (err, data) => {
+    if (err) throw err;
+    else {
+      live_url = data[0].live_url;
+      console.log("the url is:", live_url);
+      res.render("plyr1", { title: "Live Match", source: live_url });
+        }
+  });
+});
+router.get("/play2/:id", function (req, res, next) {
+  let live_url = "http://iptv.tivifa.com:8000/aminazimi/aminpass@123/99101";
+  const sqlUrl = `SELECT live_url FROM ft_tv_coverage   WHERE match_id=${req.params.id}`;
+  db.query(sqlUrl, (err, data) => {
+    if (err) throw err;
+    else {
+      live_url = data[0].live_url;
+      console.log("the url is:", live_url);
+      res.render("plyr2", { title: "Live Match", source: live_url });
+        }
+  });
+});
 
+router.get("/play3/:id", function (req, res, next) {
+  let live_url = "http://iptv.tivifa.com:8000/aminazimi/aminpass@123/99101";
+  const sqlUrl = `SELECT live_url FROM ft_tv_coverage   WHERE match_id=${req.params.id}`;
+  db.query(sqlUrl, (err, data) => {
+    if (err) throw err;
+    else {
+      live_url = data[0].live_url;
+      console.log("the url is 3:", live_url);
+      res.render("plyr3", { title: "Live Match 3", source: live_url });
+        }
+  });
+});
 module.exports = router;
